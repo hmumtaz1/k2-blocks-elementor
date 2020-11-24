@@ -85,6 +85,7 @@ class calltoaction extends Widget_Base {
 					'default'  => __( 'Default', 'elementor_k2blocks' ),
 					'classic' => __( 'Classic', 'elementor_k2blocks' ),
 					'cover' => __( 'Cover', 'elementor_k2blocks' ),
+					'traditional' => __('Traditional', 'elementor_k2blocks'),
 
 				],
 			]
@@ -560,7 +561,7 @@ $this->start_controls_section(
    		        'class' => ['cta-btn','elementor-button-text'],
    		    ]
    		);
-        $this->add_render_attribute( 'wrapper', 'class', 'elementor-button-wrapper' );
+        $this->add_render_attribute( 'btn-wrapper', 'class', 'elementor-button-wrapper' );
 
 		if ( ! empty( $settings['link']['url'] ) ) {
 			$this->add_render_attribute( 'button', 'href', $settings['link']['url'] );
@@ -596,15 +597,15 @@ $this->start_controls_section(
                 		        <?php echo $this->get_render_attribute_string( 'title' ); ?>>
                 		        <?php echo $settings['title'] ?>
                 		      </h2>
-                	   	   </div>
-                	   	    <div class="cta-content-description ">
-                                <div
-                                    <?php echo $this->get_render_attribute_string( 'content' ); ?>>
-                                    <?php echo $settings['content'] ?>
-                                </div>
-                            </div>
+                	   	 </div>
+                	   	 <div class="cta-content-description ">
+                           <div
+                               <?php echo $this->get_render_attribute_string( 'content' ); ?>>
+                               <?php echo $settings['content'] ?>
+                           </div>
+                         </div>
                 	 </div>
-                    <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
+                    <div <?php echo $this->get_render_attribute_string( 'btn-wrapper' ); ?>>
                         <a <?php echo $this->get_render_attribute_string( 'button' ); ?>>
                             <?php $this->render_text(); ?>
                         </a>
@@ -638,7 +639,7 @@ $this->start_controls_section(
                                 <?php echo $settings['content'] ?>
                          </div>
                      </div>
-                     <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
+                     <div <?php echo $this->get_render_attribute_string( 'btn-wrapper' ); ?>>
                             <a <?php echo $this->get_render_attribute_string( 'button' ); ?>>
                                 <?php $this->render_text(); ?>
                             </a>
@@ -659,7 +660,7 @@ $this->start_controls_section(
                 <div  <?php echo $this->get_render_attribute_string( 'content' ); ?>>
                       <?php echo $settings['content'] ?>
                 </div>
-                <div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
+                <div <?php echo $this->get_render_attribute_string( 'btn-wrapper' ); ?>>
                       <a <?php echo $this->get_render_attribute_string( 'button' ); ?>>
                         <?php $this->render_text(); ?>
                       </a>
@@ -667,6 +668,31 @@ $this->start_controls_section(
             </div>
        </div>
 
+
+          <?php }
+          else if($settings['layout']==='traditional'){
+          ?>
+            <div class="cta-traditional-wrapper">
+                <div class="cta-traditional-img">
+                    <img  <?php echo $this->get_render_attribute_string( 'image' );?>  src=<?php echo $settings['image']['url'] ?>  />
+                </div>
+                <div class="cta-traditional-content">
+                    <h2  <?php echo $this->get_render_attribute_string( 'title' ); ?>>
+                          <?php echo $settings['title'] ?>
+                    </h2>
+                    <div  <?php echo $this->get_render_attribute_string( 'content' ); ?>>
+                          <?php echo $settings['content'] ?>
+                    </div>
+
+                    <div <?php echo $this->get_render_attribute_string( 'btn-wrapper' ); ?>>
+                          <a <?php echo $this->get_render_attribute_string( 'button' ); ?>>
+                               <?php $this->render_text(); ?>
+                          </a>
+                    </div>
+                </div>
+
+
+            </div>
 
           <?php } ?>
 
@@ -792,6 +818,36 @@ $this->start_controls_section(
                 </div>
             </div>
        </div>
+		<# }
+		else if(settings.layout==='traditional'){#>
+
+		<div class="cta-traditional-wrapper">
+		    <div class="cta-traditional-img">
+                  <img  {{{ view.getRenderAttributeString( 'image' )}}} src={{{settings.image.url}}}  />
+             </div>
+             <div class="cta-traditional-content">
+                  <h2  {{{view.getRenderAttributeString('title')}}} >
+                    {{{ settings.title }}}
+                  </h2>
+                  <div  {{{ view.getRenderAttributeString('content') }}} >
+                       {{{ settings.content }}}
+                  </div>
+                <div class="elementor-button-wrapper">
+                       <a class="elementor-button elementor-size-{{ settings.size }} elementor-animation-{{ settings.hover_animation }}" href="{{ settings.link.url }}">
+                              <span class="elementor-button-content-wrapper">
+                                <# if ( settings.icon ) { #>
+                                    <span class="elementor-button-icon elementor-align-icon-{{ settings.icon_align }}">
+                                         <i class="{{ settings.icon }}" aria-hidden="true"></i>
+                                    </span>
+                              <# } #>
+                              <span {{{ view.getRenderAttributeString( 'text' ) }}}>{{{ settings.text }}}</span>
+                                   </span>
+                       </a>
+                 </div>
+             </div>
+
+        </div>
+
 		<# } #>
 
 		<?php
