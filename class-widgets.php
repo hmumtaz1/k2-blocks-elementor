@@ -63,6 +63,7 @@ class Widgets {
 	 */
 	private function include_widgets_files() {
 		require_once 'widgets/class-textfield.php';
+		require_once 'widgets/class-calltoaction.php';
 	}
 
 	/**
@@ -79,6 +80,8 @@ class Widgets {
 
 		// Register the plugin widget classes.
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\TextField() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Widgets\CallToAction() );
+
 	}
 
 	/**

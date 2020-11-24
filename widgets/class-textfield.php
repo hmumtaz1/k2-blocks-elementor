@@ -33,7 +33,7 @@ class textfield extends Widget_Base {
 	public function __construct( $data = array(), $args = null ) {
 		parent::__construct( $data, $args );
 
-		wp_register_style( 'textfield', plugins_url( '/assets/css/textfield.css', ELEMENTOR_textfield ), array(), '1.0.0' );
+		wp_register_style( 'textfield', plugins_url('k2-blocks-elementor/assets/css/textfield.css'));
 	}
 
 	/**
@@ -164,7 +164,7 @@ class textfield extends Widget_Base {
 		$this->add_inline_editing_attributes( 'description', 'basic' );
 		$this->add_inline_editing_attributes( 'content', 'advanced' );
 		?>
-		<h2 <?php echo $this->get_render_attribute_string( 'title' ); ?><?php echo wp_kses( $settings['title'], array() ); ?></h2>
+		<h2  <?php echo $this->get_render_attribute_string( 'title' ); ?><?php echo wp_kses( $settings['title'], array() ); ?></h2>
 		<div <?php echo $this->get_render_attribute_string( 'description' ); ?><?php echo wp_kses( $settings['description'], array() ); ?></div>
 		<div <?php echo $this->get_render_attribute_string( 'content' ); ?><?php echo wp_kses( $settings['content'], array() ); ?></div>
 		<?php
@@ -186,7 +186,7 @@ class textfield extends Widget_Base {
 		view.addInlineEditingAttributes( 'description', 'basic' );
 		view.addInlineEditingAttributes( 'content', 'advanced' );
 		#>
-		<h2 {{{ view.getRenderAttributeString( 'title' ) }}}>{{{ settings.title }}}</h2>
+		<h2  {{{ view.getRenderAttributeString( 'title' ) }}}>{{{ settings.title }}}</h2>
 		<div {{{ view.getRenderAttributeString( 'description' ) }}}>{{{ settings.description }}}</div>
 		<div {{{ view.getRenderAttributeString( 'content' ) }}}>{{{ settings.content }}}</div>
 		<?php
